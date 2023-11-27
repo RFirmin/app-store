@@ -1,0 +1,80 @@
+{% extends 'requetes/layouts/base.html' %}
+
+{% block title %} Request details {% endblock %}
+ 
+{% block body %}
+<div class="container">
+    <h6 class="display-6 text-center my-3"> STORE REQUEST FORM </h6>
+            <form action="" method="get">
+                <div class="row mt-2 mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label" for="name"> Date : </label> 
+                        <input class="form-control" type="text" name="staff" id="staff" value="{{ details.date_de_creation }}" disabled> <br>
+                        <label class="form-label" for="name"> Staff name : </label> 
+                        <input class="form-control" type="text" name="staff" id="staff" value="{{ details.staff_name }}" disabled> <br>
+                        <label class="form-label" for="name"> Department : </label>
+                        <input class="form-control" type="text" name="staff" id="staff" value="{{ details.department }}" disabled> <br>
+                        <label class="form-label" for="name"> Project Code : </label>
+                        <input class="form-control" type="text" name="staff" id="staff" value="{{ details.project_code }}" disabled>
+                        </div>
+                    <div class="col-md-6 mt-4">
+                        <ul class="list-unstyled list-inline d-flex justify-content-end">
+                            <li class="list-inline-item"><input type="radio" value="{{ details.type_service }}"></li>
+                            <li class="list-inline-item"><label class="radio-inline"> Installation </label></li>
+                            <li class="list-inline-item"><input type="radio" value="{{ details.type_service }}"></li>
+                            <li class="list-inline-item"><label class="radio-inline"> Service/Repair </label></li>
+                            <li class="list-inline-item"><input type="radio" value="{{ details.type_service }}"></li>
+                            <li class="list-inline-item"><label class="radio-inline"> Transfer </label></li>
+                            <li class="list-inline-item"><input type="radio" value="{{ details.type_service }}"></li>
+                            <li class="list-inline-item"><label class="radio-inline"> Sale </label> <br></li>
+                        </ul>
+                        <ul>
+                            <label class="form-label" for="customer"> Customer : </label>
+                            <input type="text" class="form-control" name="Customer" id="customer" value="{{ details.customer }}" disabled> <br> 
+                            <label class="form-label" for="location"> Location : </label>
+                            <input type="text" class="form-control" name="Location" id="location" value="{{ details.location }}" disabled> <br>        
+                        </ul>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <table  class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Description</th>
+                                    <th>Quantité</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for equipment in equipments %}
+                                <tr>
+                                    <td>{{ equipment }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-7">
+                    </div>
+                    <div class="col-5">
+                        <label class="form-label form-text-center" for="manager"> Manager's Signature : </label> 
+                        <input type="text" class="form-control" name="Manager's Signature" id="manager" value="{{ details.manager_signature }}" disabled> <br>
+                        <label class="form-label" for="line manager"> Line Manager's Name : </label> 
+                        <input type="text" class="form-control" name="Line Manager's Name" id="line manager" value="{{ details.line_manager_name }}" disabled> <br>
+                        <label class="form-label" for="items name"> Items Recieved by Name : </label>
+                        <input type="text" class="form-control" name="Items Recieved by Name" id="items name" value="{{ details.items_recieved_name }}" disabled> <br>
+                        <label class="form-label" for="items signature"> Items Recieved by Signature : </label>
+                        <input type="text" class="form-control" name="Items Recieved by Signature" id="items signature" value="{{ details.items_recieved_signature }}" disabled> <br>
+                        <label class="form-label" for="issued name"> Issued by Name : </label>
+                        <input type="text" class="form-control" name="Issued by Name" id="issued name" value="{{ details.issued_name }}" disabled> <br>
+                        <label class="form-label" for="issued signature"> Issued by Signature : </label>
+                        <input type="text" class="form-control" name="Issued by Signature" id="issued signature" value="{{ details.issued_signature }}" disabled> <br>
+                    </div>
+                </div>
+            </form>
+
+</div>
+{% endblock %}

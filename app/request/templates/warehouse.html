@@ -1,0 +1,71 @@
+{% extends 'requetes/layouts/base.html' %}
+
+{% block title %} Warehouse {% endblock %}
+ 
+{% block body %}
+
+        <div class="container mt-3">
+            <h2> {{ message }} </h2>
+            <div>
+                <form action="{% url 'request:search_request' %}" method="get" class="d-flex ml-3">
+                    <input type="search" name="search" class="form-control me-2" placeholder="search">
+                    <button class="btn btn-outline-primary ml-2" type="submit">Search</button>
+                </form>
+            </div>
+            <br>
+            <div class="table-responsive">        
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>Project Code</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for demande in demandes %}
+                        <tr>
+                            <td>
+                                <button class="btn btn-outline-primary">
+                                    {{ demande.id }}
+                                </button>
+                            </td>
+                            <td>
+                                <a class="nav-link text-primary" href="{% url 'request:details_request' demande.id %}">{{ demande.project_code }}</a>
+                            </td>
+                            <td>{{ demande.date_de_creation }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+{% endblock %}
+
+{% block footer %}
+
+
+    <ul class="pagination justify-content-center">
+        {% if demandes.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ demandes.previous_page_number }}">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        {% endif %}
+        <li class="page-item">
+            <p class="page-link text-muted">
+                Page {{ demandes.number }} of {{ demandes.paginator.num_pages }}.
+            </p>
+        </li>
+        {% if demandes.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ demandes.next_page_number }}">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+
+
+{% endblock %}

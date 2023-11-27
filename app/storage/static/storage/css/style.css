@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap');
+
+html, body {
+    font-family: 'Atkinson Hyperlegible', sans-serif;
+}
+
+.input-box {
+    position: relative;
+    width: 100px;
+    height: 50px;
+    border-bottom: 2px solid #661723;
+    margin: 30px 0;
+}

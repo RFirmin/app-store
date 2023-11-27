@@ -1,0 +1,12 @@
+{% extends 'storage/layouts/base404.html' %}
+
+{% block title %} Page Not Found {% endblock %}
+ 
+{% block body %}    
+    <div class="container">
+        <br>
+        <h1>Oops! Page Not Found</h1>
+        <p>The page you're looking for doesn't exist. Let's get you back on track:</p>
+        <a href="{% url 'storage:all_equipments' %}" style="text-decoration: none; color: #ff5733;">Go to Homepage</a>
+    </div>
+{% endblock %}

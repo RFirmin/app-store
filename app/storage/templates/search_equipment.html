@@ -1,0 +1,61 @@
+{% extends 'storage/layouts/base.html' %}
+
+{% block title %} Equipments list {% endblock %}
+ 
+{% block body %}
+        <div class="container">    
+            <h2 class="mt-3"> {{ message }} </h2>
+            <div>
+                <form action="{% url 'storage:search_equipment' %}" method="get" class="d-flex ml-3">
+                    <input type="search" name="search" class="form-control me-2" placeholder="search">
+                    <button class="btn btn-outline-primary ml-2" type="submit">Search</button>
+                </form>
+            </div><br>
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>Description</th>
+                        <th>Quantité</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for demande in demandes %}
+                    <tr>
+                        <td>{{ demande.number }}</td>
+                        <td><a class="nav-link" href="{% url 'storage:details_equipment' demande.number %}">{{ demande.description_equipment }}</a></td>
+                        <td>{{ demande.quantite }}</td>
+                        <td><a class="nav-link" href="{% url 'storage:update_equipment' demande.number %}">✏️</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+{% endblock %}
+
+{% block footer %}
+
+    <ul class="pagination justify-content-center">
+        {% if demandes.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ demandes.previous_page_number }}">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        {% endif %}
+        <li class="page-item">
+            <p class="page-link text-muted">
+                Page {{ demandes.number }} of {{ demandes.paginator.num_pages }}.
+            </p>
+        </li>
+        {% if demandes.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ demandes.next_page_number }}">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+
+{% endblock %}

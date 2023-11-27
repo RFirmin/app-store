@@ -1,0 +1,47 @@
+{% extends 'requetes/layouts/base.html' %}
+
+{% block title %} page {% endblock %}
+ 
+{% block body %}
+
+        <div class="container">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end my-3">
+                <button type="button" class="btn btn-outline-primary">
+                    <a class="nav-link" href="{% url 'request:new_request' %}">new</a>
+                </button>
+            </div>
+            <h2> {{ message }} </h2>
+            <br>      
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>Project Code</th>
+                            <th colspan="2">Action</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for demande in demandes %}
+                        <tr>
+                            <td>
+                                <button class="btn btn-outline-primary">
+                                    {{ demande.id }}
+                                </button>
+                            </td>
+                            <td>
+                                <a class="nav-link text-primary" href="{% url 'request:details_request' demande.id %}">{{ demande.project_code }}</a>
+                            </td>
+                            <td>
+                                <a class="nav-link" href="{% url 'request:update_request' demande.id %}">✏️</a>
+                            </td>
+                            <td>
+                                <a class="nav-link" href="{% url 'storage:choice_equipment' %}">🛒</a>
+                            </td>
+                            <td>{{ demande.date_de_creation }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+        </div>
+{% endblock %}

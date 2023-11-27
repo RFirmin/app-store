@@ -1,0 +1,55 @@
+{% extends 'requetes/layouts/base.html' %}
+
+{% block title %} Sortie Equipment {% endblock %}
+ 
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <h4 class="text-center my-3">Sortie</h4>
+                <form method="POST">
+                    {% if form.subject.errors %}
+                        {% for error in form.subject.errors %}
+                            <p class="text-danger"><strong>{{ error }}</strong></p>
+                        {% endfor %}
+                    {% endif %}
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div class="form-group">
+                            {{ field.label_tag }}
+                            {{ field }}
+                            {% if field.errors %}
+                                {% for error in field.errors %}
+                                    <p class="text-danger"><strong>{{ error }}</strong></p>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </form>
+                <form action="{% url 'storage:load_serie' %}" method="get">
+                    {% if form.subject.errors %}
+                        {% for error in form.subject.errors %}
+                            <p class="text-danger"><strong>{{ error }}</strong></p>
+                        {% endfor %}
+                    {% endif %}
+                    {% csrf_token %}
+                    {% for field in form_2 %}
+                        <div class="form-group">
+                            {{ field.label_tag }}
+                            {{ field }}
+                            {% if field.errors %}
+                                {% for error in field.errors %}
+                                    <p class="text-danger"><strong>{{ error }}</strong></p>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                    <div class="col-12">
+                        <button class="btn btn-primary mt-2" hx-get="">valid</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock body %}
+

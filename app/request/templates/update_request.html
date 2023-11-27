@@ -1,0 +1,36 @@
+{% extends 'requetes/layouts/base.html' %}
+
+{% block title %} Update Request {% endblock %}
+ 
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <h4 class="text-center my-2">Update</h4>
+                    <form action="" method="post">
+                        {% if form.subject.errors %}
+                            {% for error in form.subject.errors %}
+                                <p class="text-danger"><strong>{{ error }}</strong></p>
+                            {% endfor %}
+                        {% endif %}
+                        {% csrf_token %}
+                        {% for field in form %}
+                            <div class="form-group">
+                                {{ field.label_tag }}
+                                {{ field }}<br>
+                                {% if field.errors %}
+                                    {% for error in field.errors %}
+                                        <p class="text-danger"><strong>{{ error }}</strong></p>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                        <div class="col-12">
+                            <button class="btn btn-primary" type="submit">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>    
+    </div>
+{% endblock body %}

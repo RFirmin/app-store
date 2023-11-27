@@ -1,0 +1,40 @@
+{% extends 'storage/layouts/base.html' %}
+
+{% block title %} details equipment {% endblock %}
+ 
+{% block body %}
+        <div class="container">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
+                <button type="button" class="btn btn-outline-primary">
+                    <a class="nav-link" href="{% url 'storage:all_equipments' %}">home</a>
+                </button>
+            </div><br>
+
+            <table class="table table-over table-bordered">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>Description</th>
+                        <th>Quantité livré</th>
+                        <th>Date de livraison</th>
+                        <th>Projet</th>
+                        <th>Nom du fournisseur</th>
+                        <th>Coût du matériel</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ details.number }}</td>
+                        <td>{{ details.description_equipment }}</a></td>
+                        <td>{{ details.quantite }}</a></td>
+                        <td>{{ details.date_de_livraison }}</td>
+                        <td>{{ details.projet }}</td>
+                        <td>{{ details.nom_du_fournisseur }}</td>
+                        <td>{{ details.cout }} XAF</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+{% endblock %}
+
