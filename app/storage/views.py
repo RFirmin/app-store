@@ -228,7 +228,8 @@ def new_routeur(request):
 def search_equipment(request):
     search = request.GET.get('search')
     demandes = Storage.objects.filter(Q(description_equipment__icontains=search) |
-                                      Q(projet__icontains=search))
+                                      Q(projet__icontains=search) | 
+                                      Q(date_de_livraison=search))
     demande_number = demandes.count()
     
     message = f'{demande_number} Results :'

@@ -25,24 +25,16 @@
                             {% endif %}
                         </div>
                     {% endfor %}
-                    <br>
+                    
+                    <label>Serial number:</label>
                     <select name="serie" id="id_serie" class="form-control"> 
                         <option value="">---------</option>
                         <option value=""> </option>
                     </select>
                     <div class="col-12">
-                        <button class="btn btn-primary mt-2" hx-get="">valid</button>
+                        <button class="btn btn-primary mt-2" hx-get="">submit</button>
                     </div>
                 </form>
-                <!--<form action="{% url 'storage:load_serie' %}" method="get">
-                    <select name="serie" id="serie" multiple> 
-                        {% for d in demande %}
-                            <option value="{{ d.number }}">
-                                {{ d.serie }}
-                            </option>
-                        {% endfor %}
-                    </select>
-                </form>!-->
             </div>
         </div>
     </div>
