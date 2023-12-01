@@ -1,0 +1,17 @@
+{% extends 'requetes/layouts/base.html' %}
+
+{% block title %} Update Element {% endblock %}
+ 
+{% block body %}
+    <div class="container">
+        <h4 class="text-center my-3">Edit New stock</h4>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+                <div class="col-12">
+                    <button class="btn btn-primary" type="submit">submit</button>
+                </div>
+        </form>
+    </div>
+{% endblock body %}
